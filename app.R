@@ -7,4 +7,3 @@ library(dplyr)
 # code snippets into the `shinyApp()` function
 shinyApp(ui = my_ui, server = my_server)
 
-?twitteR
