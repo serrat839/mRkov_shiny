@@ -8,6 +8,8 @@ my_ui <- fluidPage(
 
   sidebarLayout(position = "left",
                 sidebarPanel("Options",
+                             h2("Sentence Options"),
+                             numericInput(inputId = "num_sentences", label = "Number of sentences",  value = 1, ),
                              h2("Wordcloud filter"),
                              fluidRow(
                                column(5,
@@ -31,7 +33,7 @@ my_ui <- fluidPage(
                   textOutput(outputId = "tweets_found"),
                   
                   # An output element: a text output (for the `message` key)
-                  textOutput(outputId = "sentence"),
+                  htmlOutput(outputId = "sentence"),
                   
                   # Outputting a wordcloud
                   plotOutput("plot")
