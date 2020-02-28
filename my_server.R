@@ -51,7 +51,7 @@ my_server <- function(input, output) {
       print(class(v$tweet_data))
       
       for (n in 1:input$num_sentences) {
-        text <- make_sentence(v$tweet_data)
+        text <- make_sentence(v$tweet_data, prompt = input$prompt)
         sentence <- paste0("<h2>", text, "</h2>")
         output <- paste(output, sentence, sep = "<br>")
       }
@@ -70,7 +70,8 @@ my_server <- function(input, output) {
   output$plot <- renderPlot({
     if (!is.null(v$tweet_data)) {
       make_wordcloud(v$tweet_data,
-                     pull(v$stopwords, word))
+                     pull(v$stopwords, word),
+                     n = input$num_words)
     }
   })
   

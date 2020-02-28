@@ -8,35 +8,53 @@ my_ui <- fluidPage(
 
   sidebarLayout(position = "left",
                 sidebarPanel("Options",
-                             h2("Sentence Options"),
-                             numericInput(inputId = "num_sentences", label = "Number of sentences",  value = 1, ),
-                             h2("Wordcloud filter"),
-                             fluidRow(
-                               column(5,
-                                 textInput(inputId = "stop_word", label = NULL)
-                               ),
-                               column(6,
-                                 actionButton(inputId = "add_stop_word", label = "Add Word"),
-                              )                                 ),
-                             DT::dataTableOutput("stopwords"),
-                             actionButton(inputId = "deleteRows", label = "Delete Rows")),
+                             # A widget: a text input box (save input in the `username` key)
+                             textInput(inputId = "username", label = "Insert Twitter handle (@)"),
+                             
+                             # a button to activate a twitter search
+                             actionButton(inputId = "search", label = "Search Twitter!"),
+                             
+                             # An output element: a text output (for the `message` key)
+                             textOutput(outputId = "message"),
+                             textOutput(outputId = "tweets_found"),
+                             ),
                 mainPanel(
-                  # A widget: a text input box (save input in the `username` key)
-                  textInput(inputId = "username", label = "Insert Twitter handle (@)"),
+                  tabsetPanel(type = "tabs",
+                              # Sentence Generation
+                              tabPanel("Markov Chain",
+                                       h2("Sentence Options"),
+                                       fluidRow(
+                                          column(3,
+                                            numericInput(inputId = "num_sentences", label = "Number of sentences",  value = 1)
+                                            ),
+                                          column(8,
+                                            textInput(inputId = "prompt", label = "Sentence Prompt")
+                                            )
+                                       ),
+                                       actionButton(inputId = "make_sentence", label = "Make a Sentence!"),
+                                       # An output element: a text output (for the `message` key)
+                                       htmlOutput(outputId = "sentence"),
+                                       ),
+                              # Word Cloud and word cloud settings
+                              tabPanel("Word Cloud", 
+                                       # Outputting a wordcloud
+                                       plotOutput("plot"),
+                                       h2("Wordcloud filter"),
+                                       fluidRow(
+                                         column(5,
+                                                textInput(inputId = "stop_word", label = NULL)
+                                         ),
+                                         column(6,
+                                                actionButton(inputId = "add_stop_word", label = "Add Word"),
+                                         ),
+                                         column(9,
+                                                numericInput(inputId = "num_words", label = "Wordcloud size", value = 20))
+                                         ),
+                                       DT::dataTableOutput("stopwords"),
+                                       actionButton(inputId = "deleteRows", label = "Delete Rows"))
+                  ),
                   
-                  # a button to activate a twitter search
-                  actionButton(inputId = "search", label = "Search Twitter!"),
-                  actionButton(inputId = "make_sentence", label = "Make a Sentence!"),
                   
-                  # An output element: a text output (for the `message` key)
-                  textOutput(outputId = "message"),
-                  textOutput(outputId = "tweets_found"),
-                  
-                  # An output element: a text output (for the `message` key)
-                  htmlOutput(outputId = "sentence"),
-                  
-                  # Outputting a wordcloud
-                  plotOutput("plot")
                   )
                 )
   

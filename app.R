@@ -1,5 +1,6 @@
 source("my_ui.R")
 source("my_server.R")
+library(mRkov)
 
 mRkov::setup_twitteR()
 library(dplyr)
