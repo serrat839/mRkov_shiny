@@ -38,6 +38,7 @@ my_server <- function(input, output) {
   # When the search button gets hit, run the tweet_gettr function
   observeEvent(
     input$search, {
+      # if the handle is not valid, do not do anything
       v$tweet_data <- tweet_gettr(input$username)
     }
   )
@@ -47,6 +48,7 @@ my_server <- function(input, output) {
     # if there is tweet data, generate a sentence
     if(!is.null(v$tweet_data)) {
       output <- ""
+      print(class(v$tweet_data))
       
       for (n in 1:input$num_sentences) {
         text <- make_sentence(v$tweet_data)
