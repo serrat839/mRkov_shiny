@@ -38,7 +38,7 @@ my_ui <- fluidPage(
                               # Word Cloud and word cloud settings
                               tabPanel("Word Cloud", 
                                        # Outputting a wordcloud
-                                       plotOutput("plot"),
+                                       plotOutput("plot", width = "2%"), # edited 
                                        h2("Wordcloud filter"),
                                        fluidRow(
                                          column(5,

@@ -28,7 +28,13 @@ my_server <- function(input, output) {
     # Default message if no search has been performed
     message_str <- "Waiting for twitter search..."
     # if a search has been performed, display the number of tweets found
-    if (!is.null(v$tweet_data)) {
+    print(v$tweet_data[1])
+    if (is.null(v$tweet_data)) {
+      message_str <- "No handle chosen!"
+    } else if (("try-error" %in% c(class(v$tweet_data)))) {
+      print("Found bad handle")
+      message_str <- "Bad handle!"
+    } else if (!is.null(v$tweet_data)) {
       message_str <- paste0("Found ", length(v$tweet_data$text), " tweets!")
     }
     # return the string of text to be displayed
@@ -39,7 +45,7 @@ my_server <- function(input, output) {
   observeEvent(
     input$search, {
       # if the handle is not valid, do not do anything
-      v$tweet_data <- tweet_gettr(input$username)
+      v$tweet_data <- suppressWarnings(try(tweet_gettr(input$username), silent = TRUE))
     }
   )
 
@@ -73,7 +79,7 @@ my_server <- function(input, output) {
                      pull(v$stopwords, word),
                      n = input$num_words)
     }
-  })
+  }, height = 500, width = 500)
   
   ######################################################
   #
