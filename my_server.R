@@ -45,7 +45,7 @@ my_server <- function(input, output) {
   observeEvent(
     input$search, {
       # if the handle is not valid, do not do anything
-      v$tweet_data <- suppressWarnings(try(tweet_gettr(input$username), silent = TRUE))
+      v$tweet_data <- suppressWarnings(try(tweet_gettr(paste0("@", input$username)), silent = TRUE))
     }
   )
 
