@@ -18,7 +18,10 @@ my_server <- function(input, output) {
   
   # Outputs the name of the twitter handle being scraped
   output$message <- renderText({
-    message_str <- paste0("Scraping ", input$username, "!")
+    message_str <- NULL
+    if (!is.null(v$username)) {
+      message_str <- paste0("Scraping ", v$username, "!")
+    }
     # return the string of text to be rendered
     message_str
   })
@@ -35,7 +38,9 @@ my_server <- function(input, output) {
       print("Found bad handle")
       message_str <- "Bad handle!"
     } else if (!is.null(v$tweet_data)) {
-      message_str <- paste0("Found ", length(v$tweet_data$text), " tweets!")
+      message_str <- paste0("Found ", length(v$tweet_data$text), " tweets!",
+                            "\nFinished at ",
+                            substr(as.character(Sys.time()), 12, 19))
     }
     # return the string of text to be displayed
     message_str
@@ -44,8 +49,13 @@ my_server <- function(input, output) {
   # When the search button gets hit, run the tweet_gettr function
   observeEvent(
     input$search, {
+      v$username <- paste0("@", input$username)
       # if the handle is not valid, do not do anything
-      v$tweet_data <- suppressWarnings(try(tweet_gettr(paste0("@", input$username)), silent = TRUE))
+      v$tweet_data <- suppressWarnings(try(tweet_gettr(v$username,
+                                                       includeRts = input$includeRts,
+                                                       excludeReplies = input$excludeReplies),
+                                           silent = TRUE)
+                                       )
     }
   )
 

@@ -17,6 +17,14 @@ my_ui <- fluidPage(
                              # An output element: a text output (for the `message` key)
                              textOutput(outputId = "message"),
                              textOutput(outputId = "tweets_found"),
+                             
+                             # checkbox to include retweets
+                             checkboxInput(inputId = "includeRts",
+                                           label = "Include Retweets"),
+                             checkboxInput(inputId = "excludeReplies",
+                                           label = "Exclude Replies")
+                             # checkbox to exclude replies
+                             
                              ),
                 mainPanel(
                   tabsetPanel(type = "tabs",
