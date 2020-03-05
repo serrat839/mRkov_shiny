@@ -2,7 +2,7 @@ library(shiny)
 library(mRkov)
 # The UI is the result of calling the `fluidPage()` layout function
 my_ui <- fluidPage(
-  #theme = "lux.css",
+  theme = "index.css",
   # A static content element: a 2nd level header that displays text
   titlePanel("mRkov: A fun toolbox"),
 

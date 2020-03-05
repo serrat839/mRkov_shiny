@@ -68,8 +68,7 @@ my_server <- function(input, output) {
       
       for (n in 1:input$num_sentences) {
         text <- make_sentence(v$tweet_data, prompt = input$prompt)
-        sentence <- paste0("<h2>", text, "</h2>")
-        output <- paste(output, sentence, sep = "<br>")
+        output <- paste0(output, make_html(text))
       }
     } else {
       output <- "<p>Waiting for a sentence to be generated...</p>"
