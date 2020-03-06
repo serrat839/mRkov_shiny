@@ -4,6 +4,4 @@ source("html.R")
 library(mRkov)
 library(dplyr)
 
-mRkov::setup_twitteR()
 shinyApp(ui = my_ui, server = my_server)
-
