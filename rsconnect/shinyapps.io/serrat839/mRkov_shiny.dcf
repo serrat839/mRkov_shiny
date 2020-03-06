@@ -1,0 +1,12 @@
+name: mRkov_shiny
+title: mRkov_shiny
+username:
+account: serrat839
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1898016
+bundleId: 2856257
+url: https://serrat839.shinyapps.io/mRkov_shiny/
+when: 1583480095.51525
+asMultiple: FALSE
+asStatic: FALSE

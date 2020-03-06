@@ -31,7 +31,6 @@ my_server <- function(input, output) {
     # Default message if no search has been performed
     message_str <- "Waiting for twitter search..."
     # if a search has been performed, display the number of tweets found
-    print(v$tweet_data[1])
     if (is.null(v$tweet_data)) {
       message_str <- "No handle chosen!"
     } else if (("try-error" %in% c(class(v$tweet_data)))) {
@@ -49,7 +48,7 @@ my_server <- function(input, output) {
   # When the search button gets hit, run the tweet_gettr function
   observeEvent(
     input$search, {
-      v$username <- paste0("@", input$username)
+      v$username <- input$username
       # if the handle is not valid, do not do anything
       v$tweet_data <- suppressWarnings(try(tweet_gettr(v$username,
                                                        includeRts = input$includeRts,
