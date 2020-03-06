@@ -11,9 +11,11 @@ beginning_html <-
         </div>
         <div class="content">
           <div class="handle">
-              <p class="username" style="float:left">username</P>
+              <p class="username" style="float:left">'
+middle1_html <-'</P>
               <p style="float:left; padding-left:10px;"></p>
-              <p class="handle2" style="float:left">handle</P>
+              <p class="handle2" style="float:left">'
+middle2_html <-'</P>
           </div>
           <div class="tweet">
             <span style="overflow-wrap: break-word; font-family: \'Segoe UI\', Roboto, Ubuntu, \'Helvetica Neue\', sans-serif;font-size:12px">'
@@ -32,6 +34,9 @@ end_html <- '</span>
 </article>
 </div>'
 
-make_html <- function(sentence) {
-  return(paste0(beginning_html, sentence, end_html))
+make_html <- function(sentence, username, handle) {
+  return(paste0(beginning_html, username,
+                middle1_html, handle,
+                middle2_html, sentence,
+                end_html))
 }

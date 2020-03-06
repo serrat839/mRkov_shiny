@@ -64,11 +64,10 @@ my_server <- function(input, output) {
     # if there is tweet data, generate a sentence
     if(!is.null(v$tweet_data)) {
       output <- ""
-      print(class(v$tweet_data))
       
       for (n in 1:input$num_sentences) {
         text <- make_sentence(v$tweet_data, prompt = input$prompt)
-        output <- paste0(output, make_html(text))
+        output <- paste0(output, make_html(text, v$tweet_data$twitter_meta[2], v$tweet_data$twitter_meta[1]))
       }
     } else {
       output <- "<p>Waiting for a sentence to be generated...</p>"
