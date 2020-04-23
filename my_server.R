@@ -52,12 +52,14 @@ my_server <- function(input, output) {
   })
 
   # When the search button gets hit, run the tweet_gettr function
-  observeEvent(
-    input$search, {
+  observeEvent(input$search, {
       v$username <- input$username
+      print(input$includeRts)
+      print(input$includeReplies)
       # if the handle is not valid, do not do anything
       v$tweet_data <- suppressWarnings(try(tweet_gettr(v$username,
                                                        includeRts = input$includeRts,
+                                                       includeReplies = input$includeReplies,
                                                        token = token),
                                            silent = TRUE)
                                        )
@@ -71,7 +73,7 @@ my_server <- function(input, output) {
       output <- ""
 
       for (n in 1:input$num_sentences) {
-        text <- make_sentence(v$tweet_data, prompt = input$prompt)
+        text <- make_sentence(v$tweet_data, prompt = input$prompt, n = input$ngram)
         output <- paste0(output, make_html(text, v$tweet_data$twitter_meta))
       }
     } else {

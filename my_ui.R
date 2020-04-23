@@ -2,7 +2,7 @@ library(shiny)
 library(mRkov)
 # The UI is the result of calling the `fluidPage()` layout function
 my_ui <- fluidPage(
-  theme = "index.css",
+  theme = "asdf.css",
   # A static content element: a 2nd level header that displays text
   titlePanel("mRkov: A fun toolbox"),
 
@@ -21,8 +21,10 @@ my_ui <- fluidPage(
                              # checkbox to include retweets
                              checkboxInput(inputId = "includeRts",
                                            label = "Include Retweets"),
-                             checkboxInput(inputId = "excludeReplies",
-                                           label = "Exclude Replies")
+                             checkboxInput(inputId = "includeReplies",
+                                           label = "Include Replies"),
+                             numericInput(inputId = "ngram",
+                                          label = "N-gram size",  value = 1)
                              # checkbox to exclude replies
                              
                              ),

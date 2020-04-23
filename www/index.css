@@ -18,9 +18,10 @@ body.segoe {
  font-family:  "Helvetica Neue";
 }
 
-div.tweetbox {
+.tweetbox {
   width:598px;
   min-height: 110px;
+  margin-bottom: 1px;
   background:rgb(255,255,255);
   border: 1px solid #A9A9A9;
 }
