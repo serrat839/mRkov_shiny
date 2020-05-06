@@ -4,11 +4,10 @@ library(mRkov)
 my_ui <- fluidPage(
   theme = "mrkov.css",
   # A static content element: a 2nd level header that displays text
-  titlePanel("mRkov: A fun toolbox"),
+  titlePanel("mRkov: Simulate and replicate Twitter data"),
 
   sidebarLayout(position = "left",
                 sidebarPanel("Options",
-                             # A widget: a text input box (save input in the `username` key)
                              textInput(inputId = "username", label = "Insert Twitter handle (@)"),
                              
                              # a button to activate a twitter search
@@ -34,10 +33,10 @@ my_ui <- fluidPage(
                               tabPanel("Markov Chain",
                                        h2("Sentence Options"),
                                        fluidRow(
-                                          column(3,
+                                          column(5,
                                             numericInput(inputId = "num_sentences", label = "Number of sentences",  value = 1)
                                             ),
-                                          column(8,
+                                          column(5,
                                             textInput(inputId = "prompt", label = "Sentence Prompt")
                                             )
                                        ),
