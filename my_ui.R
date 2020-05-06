@@ -2,7 +2,7 @@ library(shiny)
 library(mRkov)
 # The UI is the result of calling the `fluidPage()` layout function
 my_ui <- fluidPage(
-  theme = "asdf.css",
+  theme = "mrkov.css",
   # A static content element: a 2nd level header that displays text
   titlePanel("mRkov: A fun toolbox"),
 
@@ -61,18 +61,7 @@ my_ui <- fluidPage(
                                                 numericInput(inputId = "num_words", label = "Wordcloud size", value = 20))
                                          ),
                                        DT::dataTableOutput("stopwords"),
-                                       actionButton(inputId = "deleteRows", label = "Delete Rows")),
-                              # Markov Chain Explanation
-                              tabPanel("What is going on?", 
-                                       h2("What is a Markov Chain?"),
-                                       p("A Markov Chain is a stochastic model describing sequences
-                                         of possible events where each event depends on the previous event.
-                                         
-                                         When being used to generate sentences, this is the same as picking randomly
-                                         from a vector of words [x] that come after a given word y. 
-                                         
-                                         *note, check in with Bryan to make sure these descriptions are accurate")
-                                       )
+                                       actionButton(inputId = "deleteRows", label = "Delete Rows"))
                               
                   ),
                   
