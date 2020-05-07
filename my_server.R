@@ -1,6 +1,3 @@
-library(mRkov)
-library(dplyr)
-library(DT)
 my_server <- function(input, output) {
   # value holder
   v <- reactiveValues(data=NULL)
@@ -112,7 +109,7 @@ my_server <- function(input, output) {
 
   # Render the data table of stop words
   output$stopwords <- DT::renderDataTable({
-    datatable(v$stopwords, options = list(dom = "t"))
+    DT::datatable(v$stopwords, options = list(dom = "t"))
   })
 
   # if the delete rows button is pressed, delete the selected rows

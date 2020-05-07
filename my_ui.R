@@ -1,5 +1,3 @@
-library(shiny)
-library(mRkov)
 # The UI is the result of calling the `fluidPage()` layout function
 my_ui <- fluidPage(
   theme = "mrkov.css",
