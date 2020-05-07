@@ -11,7 +11,7 @@ middle1_html <- '" alt="Avatar" class="pfp">
 middle2_html <-'</p>
         <p class="handle">'
 middle3_html <-'</p>
-        <p>·</p>
+        <p>&#183</p>
         <p class="timer">Randomly Generated</p>
       </section>
       <section class="tweetbody">

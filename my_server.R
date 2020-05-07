@@ -1,3 +1,4 @@
+library(DT)
 my_server <- function(input, output) {
   # value holder
   v <- reactiveValues(data=NULL)
