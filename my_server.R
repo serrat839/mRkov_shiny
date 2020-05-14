@@ -31,7 +31,9 @@ my_server <- function(input, output) {
     # Default message if no search has been performed
     message_str <- "Waiting for twitter search..."
     # if a search has been performed, display the number of tweets found
-    if (is.null(v$tweet_data) || (v$tweet_data == "No Tweets Found")) {
+    if (is.null(v$tweet_data)){
+      message_str <- "Waiting for twitter search..."
+    }else if (v$tweet_data == "No Tweets Found") {
       message_str <- "Bad Handle!"
       v$tweet_data <- NULL
     } else if (("try-error" %in% c(class(v$tweet_data)))) {
