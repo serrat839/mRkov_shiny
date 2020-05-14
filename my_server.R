@@ -8,7 +8,7 @@ my_server <- function(input, output) {
   v$stopwords <- data.frame(word = character(),
                             stringsAsFactors = F)
 
-  invisible(capture.output(token <- mRkov::setup_twitteR()))
+  token <- mRkov::setup_twitteR()
 
   ######################################################
   #
@@ -33,7 +33,7 @@ my_server <- function(input, output) {
     # if a search has been performed, display the number of tweets found
     if (is.null(v$tweet_data)){
       message_str <- "Waiting for twitter search..."
-    }else if (class(v$tweet_data) == "character") {
+    }else if (v$tweet_data == "No Tweets Found") {
       message_str <- "Bad Handle!"
       v$tweet_data <- NULL
     } else if (("try-error" %in% c(class(v$tweet_data)))) {
@@ -54,11 +54,12 @@ my_server <- function(input, output) {
   observeEvent(input$search, {
     v$username <- input$username
     # if the handle is not valid, do not do anything
-    invisible(capture.output(v$tweet_data <- suppressMessages(try(mRkov::tweet_gettr(v$username,
-                                                                                     includeRts = input$includeRts,
-                                                                                     includeReplies = input$includeReplies,
-                                                                                     token = token),
-                                                                  silent = TRUE))))
+    v$tweet_data <- suppressWarnings(try(tweet_gettr(v$username,
+                                                     includeRts = input$includeRts,
+                                                     includeReplies = input$includeReplies,
+                                                     token = token),
+                                         silent = TRUE)
+    )
   }
   )
 
