@@ -30,17 +30,14 @@ my_server <- function(input, output) {
   output$tweets_found <- renderText({
     # Default message if no search has been performed
     message_str <- "Waiting for twitter search..."
-    print(v$tweet_data)
     # if a search has been performed, display the number of tweets found
     if (is.null(v$tweet_data) || (v$tweet_data == "No Tweets Found")) {
-      message_str <- "No handle chosen!"
+      message_str <- "Bad Handle!"
+      v$tweet_data <- NULL
     } else if (("try-error" %in% c(class(v$tweet_data)))) {
-      print("Found bad handle")
+      print("Extraneous Error!!!")
 
-      print(class(v$username))
-      print(v$tweet_data)
-
-      message_str <- "Bad handle!"
+      message_str <- v$tweet_data
     } else if (!is.null(v$tweet_data)) {
       message_str <- paste0("Found ", length(v$tweet_data$text), " tweets!",
                             "\nFinished at ",
