@@ -11,6 +11,16 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
+
+h2 {
+  text-align: center;
+}
+
+#make_sentence {
+  margin-bottom: 5px;
+}
+
 .username {
   font-weight: bold;
 }
@@ -70,8 +80,4 @@ p {
 .ui img {
     filter: opacity(40%);
     height: 15px;
-}
-
-h2 {
-  text-align: center;
 }
