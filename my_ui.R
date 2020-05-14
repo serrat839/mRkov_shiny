@@ -23,7 +23,10 @@ my_ui <- fluidPage(
                              numericInput(inputId = "ngram",
                                           label = "N-gram size",  value = 1),
                              # Paragraph detailing issues
-                             p("Experiencing issues? Check the \"Test Locally\" tab")
+                             p("Experiencing issues? Check the \"Test Locally\" tab"),
+                             p("Developed by:"),
+                             p("Thomas Serrano (@thomas_is_srs)"),
+                             p("Bryan D Martin (@bryandmartin_)")
 
                              ),
                 mainPanel(
@@ -64,12 +67,15 @@ my_ui <- fluidPage(
                                        h2("Right now, we are experiencing extremely high traffic
                                           that exceeds the capacities of our server!"),
                                        p("We are working on a fix for the issue. In the meantime,
-                                         you may experince issues."),
-                                       p("Alternatively, you can try the tool on your own computer
-                                         if you have the software R installed!"),
-                                       h3("Step 1:"),
+                                         you may experience issues."),
+                                       h3("Option 1:"),
+                                       p("Buy us a fancy new server."),
+                                       h3("Option 2:")
+                                       p("If you have R installed, you can download the tool on your
+                                       own computer and you don't need to rely on our server!"),
+                                       h4("Step 1:"),
                                        code('remotes::install_github("serrat839/mRkov")'),
-                                       h3("Step 2:"),
+                                       h4("Step 2:"),
                                        code('shiny::runGitHub("mRkov_shiny", username="serrat839")')
                               )
 
