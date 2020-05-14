@@ -8,7 +8,7 @@ This package and app was developed as the result of an Rstats software developme
 ## Shinyapps.io hosting
 The app can be located at the following url: [https://serrat839.shinyapps.io/mRkov_shiny/](https://serrat839.shinyapps.io/mRkov_shiny/)
 
-![A screenshot of the shiny app](img/app-screenshot.png)
+![A screenshot of the shiny app](img/app-screenshot.PNG)
 
 ## Experiencing server issues?
 *Right now, we are experiencing extremely high traffic that exceeds the capacities of our server!*
