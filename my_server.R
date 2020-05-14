@@ -67,7 +67,6 @@ my_server <- function(input, output) {
     # if there is tweet data, generate a sentence
     if(!("try-error" %in% c(class(v$tweet_data))) & !(is.null(v$tweet_data))) {
       output <- ""
-      print("Making Random Sentences")
       for (n in 1:input$num_sentences) {
         text <- make_sentence(v$tweet_data, prompt = input$prompt, n = input$ngram)
         output <- paste0(output, make_html(text, v$tweet_data$twitter_meta))
