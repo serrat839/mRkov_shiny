@@ -30,8 +30,9 @@ my_server <- function(input, output) {
   output$tweets_found <- renderText({
     # Default message if no search has been performed
     message_str <- "Waiting for twitter search..."
+    print(v$tweet_data)
     # if a search has been performed, display the number of tweets found
-    if (is.null(v$tweet_data)) {
+    if (is.null(v$tweet_data) || (v$tweet_data == "No Tweets Found")) {
       message_str <- "No handle chosen!"
     } else if (("try-error" %in% c(class(v$tweet_data)))) {
       print("Found bad handle")
@@ -51,31 +52,29 @@ my_server <- function(input, output) {
 
   # When the search button gets hit, run the tweet_gettr function
   observeEvent(input$search, {
-      v$username <- input$username
-      print(input$includeRts)
-      print(input$includeReplies)
-      # if the handle is not valid, do not do anything
-      v$tweet_data <- suppressWarnings(try(tweet_gettr(v$username,
-                                                       includeRts = input$includeRts,
-                                                       includeReplies = input$includeReplies,
-                                                       token = token),
-                                           silent = TRUE)
-                                       )
-    }
+    v$username <- input$username
+    # if the handle is not valid, do not do anything
+    v$tweet_data <- suppressWarnings(try(tweet_gettr(v$username,
+                                                     includeRts = input$includeRts,
+                                                     includeReplies = input$includeReplies,
+                                                     token = token),
+                                         silent = TRUE)
+    )
+  }
   )
 
 
   observeEvent(input$make_sentence, {
     # if there is tweet data, generate a sentence
-    if(!is.null(v$tweet_data)) {
+    if(!("try-error" %in% c(class(v$tweet_data))) & !(is.null(v$tweet_data))) {
       output <- ""
-
+      print("Making Random Sentences")
       for (n in 1:input$num_sentences) {
         text <- make_sentence(v$tweet_data, prompt = input$prompt, n = input$ngram)
         output <- paste0(output, make_html(text, v$tweet_data$twitter_meta))
       }
     } else {
-      output <- "<p>Waiting for a sentence to be generated...</p>"
+      output <- "<p>Waiting for a successful twitter scrape!</p>"
     }
 
     v$sentence <- HTML(output)
@@ -118,7 +117,7 @@ my_server <- function(input, output) {
     if (!is.null(input$stopwords_rows_selected)) {
       v$stopwords <- data.frame(word = v$stopwords[-as.numeric(input$stopwords_rows_selected),],
                                 stringsAsFactors = F)
-      }
+    }
   })
 
 }
