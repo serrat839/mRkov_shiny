@@ -70,7 +70,7 @@ my_ui <- fluidPage(
                                          you may experience issues."),
                                        h3("Option 1:"),
                                        p("Buy us a fancy new server."),
-                                       h3("Option 2:")
+                                       h3("Option 2:"),
                                        p("If you have R installed, you can download the tool on your
                                        own computer and you don't need to rely on our server!"),
                                        h4("Step 1:"),
