@@ -5,8 +5,8 @@ account: serrat839
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1898016
-bundleId: 3114937
+bundleId: 3145668
 url: https://serrat839.shinyapps.io/mRkov_shiny/
-when: 1588837822.26266
+when: 1589435759.88046
 asMultiple: FALSE
 asStatic: FALSE
