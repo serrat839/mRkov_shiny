@@ -36,8 +36,9 @@ my_server <- function(input, output) {
       v$tweet_data <- NULL
     } else if (("try-error" %in% c(class(v$tweet_data)))) {
       print("Extraneous Error!!!")
-
+      print(v$tweet_data)
       message_str <- v$tweet_data
+      message_str <- message_str + "\n Please notify either @bryandmartin_ or @thomas_is_srs on twitter!"
     } else if (!is.null(v$tweet_data)) {
       message_str <- paste0("Found ", length(v$tweet_data$text), " tweets!",
                             "\nFinished at ",
