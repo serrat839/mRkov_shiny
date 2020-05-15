@@ -24,10 +24,10 @@ my_ui <- fluidPage(
                                           label = "N-gram size",  value = 1),
                              # Paragraph detailing issues
                              p("Experiencing issues? Check the \"Test Locally\" tab"),
+                             p(" "),
                              p("Developed by:"),
                              p("Thomas Serrano (@thomas_is_srs)"),
                              p("Bryan D Martin (@bryandmartin_)")
-
                              ),
                 mainPanel(
                   tabsetPanel(type = "tabs",
