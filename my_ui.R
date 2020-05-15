@@ -23,11 +23,15 @@ my_ui <- fluidPage(
                              numericInput(inputId = "ngram",
                                           label = "N-gram size",  value = 1),
                              # Paragraph detailing issues
-                             p("Experiencing issues? Check the \"Test Locally\" tab"),
-                             p(" "),
+                             p("Our servers are overloaded right now due to heavy traffic. You can run the app locally by following the instructions in the \"Test Locally\" tab."),
+                             br(),
                              p("Developed by:"),
-                             p("Thomas Serrano (@thomas_is_srs)"),
-                             p("Bryan D Martin (@bryandmartin_)")
+                             p("Thomas Serrano (",
+                               a("@thomas_is_srs", href="https://twitter.com/thomas_is_srs"),
+                               ")"),
+                             p("Bryan D Martin (",
+                             a("@BryanDMartin_", href="https://twitter.com/BryanDMartin_"),
+                             ")"),
                              ),
                 mainPanel(
                   tabsetPanel(type = "tabs",
