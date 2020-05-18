@@ -21,3 +21,6 @@ If you have R installed however, you can download the tool on your own computer 
 `remotes::install_github("serrat839/mRkov")`
 ### Step 2:
 `shiny::runGitHub("mRkov_shiny", username="serrat839")`
+
+Note:
+If you are installing shiny for the first time, you may run into an issue where Step 2 fails with error "Error in library(DT) : there is no package called ‘DT’".  To resolve, install DT (`install.packages("DT")`) and then rerun Step 2.
