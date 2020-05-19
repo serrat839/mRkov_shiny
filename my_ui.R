@@ -80,7 +80,20 @@ my_ui <- fluidPage(
                                        h4("Step 1:"),
                                        code('remotes::install_github("serrat839/mRkov")'),
                                        h4("Step 2:"),
-                                       code('shiny::runGitHub("mRkov_shiny", username="serrat839")')
+                                       code('shiny::runGitHub("mRkov_shiny", username="serrat839")'),
+                                       p(""),
+                                       h5("Note:"),
+                                       p("If this is your first time using R or you don't have certain packages
+                                         installed, you may see an error such as"),
+                                       code("Error in library(...) : there is no package called '...'"),
+                                       p("To fix this, you can install whatever dependency you need via
+                                         any/all of the following (if you encounter another dependency not
+                                         listed here, please post it as an issue so we can add it!):"),
+                                       code('install.packages("remotes")'),
+                                       p(""),
+                                       code('install.packages("DT")'),
+                                       p(""),
+                                       code('install.packages("shiny")')
                               )
 
                   ),

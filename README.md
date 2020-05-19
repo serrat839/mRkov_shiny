@@ -21,3 +21,9 @@ If you have R installed however, you can download the tool on your own computer 
 `remotes::install_github("serrat839/mRkov")`
 ### Step 2:
 `shiny::runGitHub("mRkov_shiny", username="serrat839")`
+
+Note: If this is your first time using R or you don't have certain packages installed, you may see an error such as `Error in library(...) : there is no package called '...'`. To fix this, you can install whatever dependency you need via any/all of the following (if you encounter another dependency not listed here, please post it as an issue so we can add it!):
+
+`install.packages("remotes")`
+`install.packages("DT")`
+`install.packages("shiny")`
